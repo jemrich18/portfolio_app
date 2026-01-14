@@ -30,6 +30,11 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1', cast=Csv())
 
+# Add Railway domain if RAILWAY_PUBLIC_DOMAIN is set
+railway_domain = config('RAILWAY_PUBLIC_DOMAIN', default=None)
+if railway_domain:
+    ALLOWED_HOSTS.append(railway_domain)
+
 
 # Application definition
 
